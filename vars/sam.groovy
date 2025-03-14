@@ -12,10 +12,9 @@ def okay() {
 
 def createdir(String dirname) {
     sh """
-        mkdir -p /root/${dirname} 
-        chmod 755 /root/${dirname}
-        touch /root/${dirname}/okay
-        echo "hello" > /root/${dirname}/okay
+        mkdir -p -m 777 /tmp/${dirname} 
+    touch /tmp/${dirname}/okay
+    echo "hello" > /tmp/${dirname}/okay
     """
     echo "Directory /root/${dirname} created successfully."
 }
