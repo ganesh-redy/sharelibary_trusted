@@ -1,0 +1,31 @@
+@Library('share_lib') _ 
+
+pipeline {
+    agent any
+    stages {
+        stage("call user-defined function without parameters") {
+            steps {
+                script {
+                    sam.okay()
+                }
+            }
+        }
+
+        stage("call with parameters") {
+            steps {
+                script {
+                    sam.fun("hello")
+                }
+            }
+        }
+
+        stage("assign function to another function") {
+            steps {
+                script {
+                    def fun3 = sam.fun2("ganesh", 22) // Correct type for 's1' (int)
+                    echo "Name: ${fun3}" // Print only the name
+                }
+            }
+        }
+    }
+}
