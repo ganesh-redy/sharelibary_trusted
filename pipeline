@@ -1,4 +1,4 @@
-@Library('share_lib@main') _
+@Library('share_lib@main') _ 
 
 pipeline {
     agent any
@@ -24,6 +24,22 @@ pipeline {
                 script {
                     def fun3 = sam.fun2("ganesh", 22) // Correct type for 's1' (int)
                     echo "Name: ${fun3}" // Print only the name
+                }
+            }
+        }
+
+        stage("create dir") {
+            steps {
+                script {
+                    sam.createdir("directory1")
+                }
+            }
+        }
+
+        stage("call the default call function") {
+            steps {
+                script {
+                    sam() // Calls the default function inside sam.groovy
                 }
             }
         }
